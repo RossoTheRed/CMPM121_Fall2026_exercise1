@@ -28,16 +28,13 @@
     const swatch = document.querySelector("#swatch");
 
     function update() {
-      let item = colorList[0];
-      for (let i = 0; i < colorList.length; i++) {
-        if (i === colorIndex) item = colorList[i];
-      }
-      label.textContent = item.name;
-      swatch.style.backgroundColor = item.color;
+      let colorItem = colorList[colorIndex];
+      label.textContent = colorItem.name;
+      swatch.style.backgroundColor = colorItem.color;
     }
 
     document.querySelector("#next").addEventListener("click", () => {
-      colorIndex = (colorIndex + 1) % colorList.length;
+      colorIndex = (colorIndex + 1) % colorList.length; // The modulo clamps colorIndex to be within colorList.length
       update();
     });
     document.querySelector("#previous").addEventListener("click", () => {
